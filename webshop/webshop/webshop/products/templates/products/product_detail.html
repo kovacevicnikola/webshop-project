@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+<div>
+    <h1>{{ object.title }}</h1>
+    <h2>{{ object.description }}</h2>
+    <h2>{{ object.price }}</h2>
+    <img src='/media/{{object.image}}' width="200" height="200">
+</div>
+    {% endblock content %}
