@@ -1,0 +1,6 @@
+
+{% for instance in featured %}
+
+<div><a href="{{instance.get_absolute_url}}">{{ instance.title }}</a>{{ instance.price }} <img src='/media/{{object.image}}' width="200" height="200"></div>
+
+{% endfor %}
