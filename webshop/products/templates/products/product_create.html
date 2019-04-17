@@ -4,7 +4,7 @@
 {# Display a form #}
 {% block content %}
     <div class="container">   
-        <form method="post" class="form">
+        <form method="post" class="form" enctype="multipart/form-data">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}

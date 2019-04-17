@@ -1,9 +1,9 @@
 {%block content%}
-
+<div class="container">
 {% for instance in featured %}
 
-<li class="list-group-item"><a href="{{instance.get_absolute_url}}">{{ instance.title }}</a>{{ instance.price }} <img src='/media/{{object.image}}' width="200" height="200"></li>
+<div class="jumbotron"><a href="{{instance.get_absolute_url}}">{{ instance.title }}</a>{{ instance.price }} <img src='/media/{{object.image}}' width="200" ></div>
 
 {% endfor %}
-
+</div class="container">
 {% endblock %}

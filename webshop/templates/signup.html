@@ -1,10 +1,8 @@
 {% extends 'layout.html' %}
 {% load bootstrap4 %}
-
-{# Display a form #}
 {% block content %}
     <div class="container">   
-        <form method="post" class="form" enctype="multipart/form-data">
+        <form method="post" class="form">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
@@ -12,4 +10,4 @@
             {% endbuttons %}
         </form>
     </div> 
-{% endblock %}
+{% endblock content %}

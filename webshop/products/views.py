@@ -4,6 +4,10 @@ from .forms import ProductForm
 
 from django.contrib.auth.models import User
 
+from django.contrib.auth.decorators import login_required
+
+from django.core.files.uploadedfile import SimpleUploadedFile
+
 from .models import Product
 # Create your views here.
 
@@ -14,23 +18,30 @@ def product_detail_view(request, id):
     }
     return render(request, "products/product_detail.html", context)
 
+
+@login_required
 def product_create_view(request):
-    if request.user.is_authenticated:
-        form = ProductForm(request.POST or None)
+    
+    if request.method =="POST":
+        form = ProductForm(request.POST, request.FILES)
+    
         if form.is_valid():
             form.save()
             form = ProductForm(request.POST or None)
-        
-        context = {
-            'form':form
-        }
-        return render(request, "products/product_create.html", context)
     else:
-        return render(request, "home.html")
+        form = ProductForm()
+    
+    context = {
+        'form':form
+    }
+    return render(request, "products/product_create.html", context)
 
+@login_required
 def product_change_view(request, id):
     obj = get_object_or_404(Product, id=id)
-    form = ProductForm(request.POST or None, instance=obj)
+    form = ProductForm(request.POST, request.FILES, instance=obj)
+    
+    
     if form.is_valid():
         form.save()
     context = {
@@ -39,6 +50,7 @@ def product_change_view(request, id):
     }
     return render(request, "products/product_change.html", context)
 
+@login_required
 def product_delete_view(request, id):
     obj = get_object_or_404(Product, id=id)
     if request.method == "POST":
@@ -48,6 +60,7 @@ def product_delete_view(request, id):
         'object':obj,
         }
     return render(request, "products/product_delete.html", context)
+
 
 def product_list_view(request):
     queryset = Product.objects.all()
