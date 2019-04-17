@@ -137,3 +137,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     )
 }
+
+ACCOUNT_ACTIVATION_DAYS = 7 
+LOGIN_REDIRECT_URL = '/'
