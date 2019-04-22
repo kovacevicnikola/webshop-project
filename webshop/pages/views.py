@@ -7,10 +7,9 @@ from django.contrib.auth.models import User
 
 def home_view(request, *args, **kwargs):
     queryset = Product.objects.filter(featured=True)
-    user = User()
+    
     context = {
         'featured':queryset,
-        'user':user
     }
     return render(request, "home.html", context)
 

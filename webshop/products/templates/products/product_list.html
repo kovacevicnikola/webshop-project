@@ -5,7 +5,7 @@
 <ul class="list-group">
     {% for instance in object_list %}
 
-    <a href="http://127.0.0.1:8000/{{instance.get_absolute_url}}" class="list-group-item list-group-item-action">{{ instance.title }}</a>
+    <a href="{% url 'products:product-detail' instance.id %}" class="list-group-item list-group-item-action">{{ instance.title }}</a>
 
     {% endfor %}
 </ul>

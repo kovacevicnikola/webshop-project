@@ -39,11 +39,13 @@ def product_create_view(request):
 @login_required
 def product_change_view(request, id):
     obj = get_object_or_404(Product, id=id)
-    form = ProductForm(request.POST, request.FILES, instance=obj)
+    if request.method=="POST":
+        form = ProductForm(request.POST, request.FILES, instance=obj)
     
-    
-    if form.is_valid():
-        form.save()
+        if form.is_valid():
+            form.save()
+    else:
+        form = ProductForm(None, instance=obj)
     context = {
         'object':obj,
         'form':form

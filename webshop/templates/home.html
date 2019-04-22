@@ -7,7 +7,7 @@
 
 <div class="jumbotron">
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><a href="{{instance.get_absolute_url}}" class = "btn btn-primary btn-xs" role="button">{{ instance.title }}</a> {{ instance.price }} RSD 
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><a href="{% url 'products:product-detail' instance.id %}" class = "btn btn-primary btn-xs" role="button">{{ instance.title }}</a> {{ instance.price }} RSD 
         <br>
         {{ instance.description }}
         </div> 

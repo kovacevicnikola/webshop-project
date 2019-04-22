@@ -12,8 +12,8 @@ app_name = 'products'
 urlpatterns= [
     path('<int:id>/', product_detail_view, name='product-detail'),
     path('create/', product_create_view, name='product-create'),
-    path('change/<int:id>/', product_change_view, name='product-change'),
-    path('delete/<int:id>/', product_delete_view, name='product-delete'),
+    path('<int:id>/change/', product_change_view, name='product-change'),
+    path('<int:id>/delete/', product_delete_view, name='product-delete'),
     path('list/', product_list_view, name='product-list'),
     path('featured/', product_featured_view, name='product-featured'),
     

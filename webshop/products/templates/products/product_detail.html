@@ -4,9 +4,19 @@
 
 {% block content %}
 <div>
-    <h1>{{ object.title }}</h1>
+    <h1>{{ object.title }}</h1><h2 class="text-secondary">{{ object.price }}</h2>
     <h2>{{ object.description }}</h2>
-    <h2>{{ object.price }}</h2>
-    <img src='/media/{{object.image}}' width="200" height="200">
+    
+    <img src='/media/{{object.image}}'id="productimage" class="img-fluid rounded max-height" alt="Responsive image">
+    
 </div>
+
+<br> <br>
+
+<div class="btn-group btn-group-lg" role="group" aria-label="...">
+    <a href="http://127.0.0.1:8000/{{object.get_absolute_url}}/change" class = "btn btn-success btn-xs" role="button">Update</a>
+    <a href="http://127.0.0.1:8000/{{object.get_absolute_url}}/delete" class = "btn btn-danger btn-xs" role="button">Delete</a>
     {% endblock content %}
+
+</div>
+
